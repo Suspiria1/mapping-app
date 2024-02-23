@@ -6,10 +6,7 @@ export default function Home() {
         <div className={styles.container}>
             <Head>
                 <title>InnerMap</title>
-                <link
-                    rel="icon"
-                    href="nextjs-blog/public/InnerMaps-removebg-preview.png"
-                />
+                <link rel="icon" href="logo.ico" />
             </Head>
 
             <main>
@@ -18,7 +15,7 @@ export default function Home() {
                 </h1>
 
                 <p className={styles.description}>
-                    Get started by editing <code>pages/index.js</code>
+                    Get started by editing <code>pages/index.jsssss</code>
                 </p>
 
                 <div className={styles.grid}>
