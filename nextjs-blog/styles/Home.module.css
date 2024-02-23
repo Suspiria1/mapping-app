@@ -95,7 +95,7 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    background-color: blue; /* Change to your desired background color */
+    background-color: #a0ddff; /* Change to your desired background color */
     color: white; /* Text color */
 }
 
@@ -114,7 +114,7 @@
     font-size: 1.5rem;
     border-radius: 20px; /* Rounded border */
     background-color: white; /* Button background color */
-    color: blue; /* Button text color */
+    color: #a0ddff; /* Button text color */
     border: none;
     cursor: pointer;
     transition: background-color 0.3s, color 0.3s;
@@ -122,7 +122,7 @@
 
 .button:hover {
     background-color: #fff;
-    color: blue;
+    color: #a0ddff;
 }
 
 .footer {
