@@ -16,7 +16,9 @@ export default function Home() {
             <main>
                 <main className={styles.main}>
                     <h1 className={styles.title}>InnerMaps</h1>
-                    <button className={styles.button}>Start</button>
+                    <Link href="/map-page">
+                        <button className={styles.button}>Start</button>
+                    </Link>
                 </main>
             </main>
 
