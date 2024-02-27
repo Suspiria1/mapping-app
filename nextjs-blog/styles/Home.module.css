@@ -71,12 +71,12 @@
 .arrowContainer {
     position: absolute;
     top: calc(
-        50% - 32.5px
+        50% + 60px
     ); /* Adjust this value to vertically center the arrow */
     left: calc(
         50% - 32.5px
     ); /* Adjust this value to horizontally center the arrow */
-    z-index: 1; /* Ensure the arrow appears above other content */
+    z-index: 5; /* Ensure the arrow appears above other content */
 }
 
 .arrow {
