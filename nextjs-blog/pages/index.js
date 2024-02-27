@@ -15,7 +15,7 @@ export default function Home() {
 
             <main>
                 <main className={styles.main}>
-                    <div className={styles.div}>Room 1</div>
+                    <div id={styles.div}>Room 1</div>
                 </main>
             </main>
 
