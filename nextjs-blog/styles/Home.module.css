@@ -84,3 +84,13 @@
     height: auto;
     transform: rotate(-90deg);
 }
+
+#button1 {
+    bottom: 0;
+    padding: 10px;
+    width: 160px;
+    height: 70px;
+    background-color: #a0ddff;
+    color: #fff;
+    border-radius: 0.5rem;
+}
