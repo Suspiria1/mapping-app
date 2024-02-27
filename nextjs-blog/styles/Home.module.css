@@ -72,5 +72,6 @@
     width: 65px;
     height: auto;
     rotate: -90deg;
-    translate: 0, -400px;
+    position: relative;
+    top: 10%;
 }
