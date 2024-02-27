@@ -71,7 +71,7 @@
 .arrowContainer {
     position: absolute;
     top: calc(
-        50% + 60px
+        50% + 50px
     ); /* Adjust this value to vertically center the arrow */
     left: calc(
         50% - 32.5px
@@ -80,7 +80,7 @@
 }
 
 .arrow {
-    width: 50px;
+    width: 65px;
     height: auto;
     transform: rotate(-90deg);
 }
