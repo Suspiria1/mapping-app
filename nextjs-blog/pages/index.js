@@ -1,8 +1,12 @@
-import Head from "next/head";
-import styles from "../styles/Home.module.css";
-import Link from "next/link";
-
 export default function Home() {
+    const [arrowTop, setArrowTop] = useState("50%");
+
+    const moveArrowUp = () => {
+        const currentTop = parseFloat(arrowTop);
+        const newTop = currentTop - 100; // Move the arrow up by 100px
+        setArrowTop(`${newTop}px`);
+    };
+
     return (
         <div className={styles.container}>
             <Head>
@@ -17,7 +21,7 @@ export default function Home() {
                 <h1 id={styles.title}>InnerMaps</h1>
             </nav>
 
-            <div className={styles.arrowContainer}>
+            <div className={styles.arrowContainer} style={{ top: arrowTop }}>
                 <img
                     src="/right-arrow-in-a-circle.png"
                     alt="Blue arrow icon"
@@ -32,6 +36,7 @@ export default function Home() {
                 <section id={styles.room1}>
                     <p>Room 1</p>
                 </section>
+                <button onClick={moveArrowUp}>Move Arrow Up</button>
             </main>
 
             <footer>
