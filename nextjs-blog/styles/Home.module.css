@@ -11,20 +11,13 @@
     height: 1em;
 }
 
-@media (max-width: 600px) {
-    .grid {
-        width: 100%;
-        flex-direction: column;
-    }
-}
-
 .container {
     min-height: 100vh;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    background-color: #fff; /* Change to your desired background color */
+    background-color: #efeeee; /* Change to your desired background color */
     color: white; /* Text color */
     margin: 0;
 }
@@ -34,34 +27,13 @@
     text-align: center;
 }
 
-.title {
-    font-size: 3rem; /* Adjust font size as needed */
-    margin-bottom: 2rem;
-}
-
-.button {
-    padding: 1rem 2rem;
-    font-size: 1.5rem;
-    border-radius: 20px; /* Rounded border */
-    background-color: white; /* Button background color */
-    color: #a0ddff; /* Button text color */
-    border: none;
-    cursor: pointer;
-    transition: background-color 0.3s, color 0.3s;
-}
-
-.button:hover {
-    background-color: #fff;
-    color: #a0ddff;
-}
-
 .footer {
     width: 100%;
     height: 100px;
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: #333; /* Footer background color */
+    background-color: #a0ddff; /* Footer background color */
     color: white; /* Footer text color */
 }
 #room2 {
@@ -89,4 +61,9 @@
     background-color: #a0ddff;
     width: 100%;
     float: left;
+}
+
+#title {
+    color: #000;
+    margin: 10px;
 }

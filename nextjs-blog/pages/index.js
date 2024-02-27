@@ -14,7 +14,7 @@ export default function Home() {
             </Head>
 
             <nav id={styles.navbar}>
-                <h1>InnerMaps</h1>
+                <h1 id={styles.title}>InnerMaps</h1>
             </nav>
 
             <main>
