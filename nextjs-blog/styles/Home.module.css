@@ -68,8 +68,19 @@
     margin: 10px;
 }
 
-#arrow {
+.arrowContainer {
+    position: absolute;
+    top: calc(
+        50% - 32.5px
+    ); /* Adjust this value to vertically center the arrow */
+    left: calc(
+        50% - 32.5px
+    ); /* Adjust this value to horizontally center the arrow */
+    z-index: 1; /* Ensure the arrow appears above other content */
+}
+
+.arrow {
     width: 65px;
     height: auto;
-    rotate: -90deg;
+    transform: rotate(-90deg);
 }
