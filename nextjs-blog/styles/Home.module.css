@@ -67,3 +67,9 @@
     color: #000;
     margin: 10px;
 }
+
+#arrow {
+    width: 65px;
+    height: auto;
+    rotate: 90deg;
+}
