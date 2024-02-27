@@ -33,13 +33,6 @@ export default function Home() {
             </footer>
 
             <style jsx>{`
-                #room1 {
-                    border: 3px solid #000;
-                    width: 50px;
-                    height: 50px;
-                    background-color: #fff;
-                }
-
                 main {
                     padding: 5rem 0;
                     flex: 1;
