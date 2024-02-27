@@ -71,7 +71,7 @@
 .arrowContainer {
     position: absolute;
     top: calc(
-        50% + 35px
+        50% + 15px
     ); /* Adjust this value to vertically center the arrow */
     left: calc(
         50% - 32.5px
