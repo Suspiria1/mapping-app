@@ -14,7 +14,7 @@ export default function Home() {
             </Head>
 
             <main>
-                <section className={styles.div}>Room 1</section>
+                <section id={styles.div}>Room 1</section>
             </main>
 
             <footer>
