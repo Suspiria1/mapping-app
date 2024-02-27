@@ -17,6 +17,14 @@ export default function Home() {
                 <h1 id={styles.title}>InnerMaps</h1>
             </nav>
 
+            <figure>
+                <img
+                    src="/right-arrow-in-a-circle.png"
+                    alt="Blue arrow icon"
+                    id={styles.arrow}
+                />
+            </figure>
+
             <main>
                 <section id={styles.room2}>
                     <p>Room 2</p>
