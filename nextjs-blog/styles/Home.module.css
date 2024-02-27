@@ -157,4 +157,6 @@
 
 #navbar {
     background-color: #a0ddff;
+    width: 100%;
+    float: left;
 }
