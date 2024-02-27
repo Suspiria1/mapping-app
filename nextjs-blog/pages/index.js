@@ -33,7 +33,6 @@ export default function Home() {
                 <section id={styles.room1}>
                     <p>Room 1</p>
                 </section>
-                <button onClick={moveArrowUp}>Move to Next Room</button>
             </main>
 
             <footer>
