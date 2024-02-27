@@ -33,7 +33,7 @@ export default function Home() {
                 <section id={styles.room1}>
                     <p>Room 1</p>
                 </section>
-                <button onClick={moveArrowUp}>Move Arrow Up</button>
+                <button onClick={moveArrowUp}>Move to Next Room</button>
             </main>
 
             <footer>
@@ -102,30 +102,6 @@ export default function Home() {
                     box-sizing: border-box;
                 }
             `}</style>
-        </div>
-    );
-}
-
-export default function Home() {
-    const [arrowTop, setArrowTop] = useState("50%");
-
-    const moveArrowUp = () => {
-        const currentTop = parseFloat(arrowTop);
-        const newTop = currentTop - 100; // Move the arrow up by 100px
-        setArrowTop(`${newTop}px`);
-    };
-
-    return (
-        <div className={styles.container}>
-            {/* Header, navigation, and main content */}
-            <div className={styles.arrowContainer} style={{ top: arrowTop }}>
-                <img
-                    src="/right-arrow-in-a-circle.png"
-                    alt="Blue arrow icon"
-                    className={styles.arrow}
-                />
-            </div>
-            {/* Footer */}
         </div>
     );
 }
