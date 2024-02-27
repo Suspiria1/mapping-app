@@ -33,7 +33,7 @@ export default function Home() {
                 <section id={styles.room1}>
                     <p>Room 1</p>
                 </section>
-                <button>Move to Next Room</button>
+                <button id={styles.button1}>Move to Next Room</button>
             </main>
 
             <footer>
