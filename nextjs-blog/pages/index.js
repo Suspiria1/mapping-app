@@ -13,6 +13,10 @@ export default function Home() {
                 </title>
             </Head>
 
+            <nav id={styles.navbar}>
+                <h1>InnerMaps</h1>
+            </nav>
+
             <main>
                 <section id={styles.room2}>
                     <p>Room 2</p>
