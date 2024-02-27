@@ -15,6 +15,7 @@ export default function Home() {
 
             <main>
                 <section id={styles.room1}>Room 1</section>
+                <section id={styles.room1}>Room 2</section>
             </main>
 
             <footer>

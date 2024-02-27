@@ -135,8 +135,10 @@
     color: white; /* Footer text color */
 }
 #room1 {
-    border: 3px solid #000;
+    border: 2px solid #000;
     width: 50px;
     height: 50px;
     background-color: #fff;
+    color: #000;
+    display: inline-block;
 }
