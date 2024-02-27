@@ -14,7 +14,7 @@ export default function Home() {
             </Head>
 
             <main>
-                <section id={styles.sect}>Room 1</section>
+                <section className={styles.div}>Room 1</section>
             </main>
 
             <footer>
@@ -32,7 +32,7 @@ export default function Home() {
             </footer>
 
             <style jsx>{`
-                sect {
+                div {
                     border: 3px solid #000;
                     width: 50px;
                     height: 50px;
