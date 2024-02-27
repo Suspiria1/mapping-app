@@ -15,10 +15,7 @@ export default function Home() {
 
             <main>
                 <main className={styles.main}>
-                    <h1 className={styles.title}>InnerMaps</h1>
-                    <Link href="/map-page">
-                        <button className={styles.button}>Start</button>
-                    </Link>
+                    <div className={styles.div}>Room 1</div>
                 </main>
             </main>
 
@@ -37,6 +34,13 @@ export default function Home() {
             </footer>
 
             <style jsx>{`
+                div {
+                    border: 3px solid #000;
+                    width: 50px;
+                    height: 50px;
+                    background-color: #fff;
+                }
+
                 main {
                     padding: 5rem 0;
                     flex: 1;
