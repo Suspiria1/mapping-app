@@ -86,11 +86,12 @@
 }
 
 #button1 {
-    position: fixed;
+    position: relative;
     bottom: 15%;
     width: 160px;
     height: 70px;
     background-color: #a0ddff;
     color: #fff;
     border-radius: 0.5rem;
+    color: #000;
 }
