@@ -1,6 +1,5 @@
 .container {
     min-height: 100vh;
-    padding: 0 0.5rem;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -86,7 +85,7 @@
 }
 
 #button1 {
-    position: relative;
+    position: fixed;
     bottom: 15%;
     width: 160px;
     height: 70px;
