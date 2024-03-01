@@ -95,3 +95,29 @@
   border-radius: 0.5rem;
   color: #000;
 }
+
+#button2 {
+  width: 160px;
+  height: 70px;
+  background-color: #a0ddff;
+  color: #fff;
+  border-radius: 0.5rem;
+  color: #000;
+  display: inline;
+  z-index: 1;
+  margin: 10px;
+}
+
+.buttoncontainer {
+  position: fixed;
+  bottom: 15%;
+}
+
+@keyframes moveUpAnimation {
+  0% {
+    transform: translateY(0);
+  }
+  100% {
+    transform: translateY(-150px);
+  }
+}
