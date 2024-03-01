@@ -4,104 +4,128 @@ import Link from "next/link";
 import React, { useState } from "react";
 
 export default function Home() {
-    return (
-        <div className={styles.container}>
-            <Head>
-                <title>InnerMap</title>
-                <link rel="icon" href="logo.ico" />
-                <title className={`dancing-script-${styles.uniquifier}`}>
-                    InnerMap
-                </title>
-            </Head>
+  const [isArrowMoved, setIsArrowMoved] = useState(false);
 
-            <nav id={styles.navbar}>
-                <h1 id={styles.title}>InnerMaps</h1>
-            </nav>
+  const moveArrow = () => {
+    setIsArrowMoved(true); // Set the state to indicate the arrow is moved
+    setTimeout(() => {
+      setIsArrowMoved(false); // Reset the state after 1 second
+      window.location.reload(); // Reload the page
+    });
+  };
 
-            <div className={styles.arrowContainer}>
-                <img
-                    src="/right-arrow-in-a-circle.png"
-                    alt="Blue arrow icon"
-                    className={styles.arrow}
-                />
-            </div>
+  const moveArrowback = () => {
+    setIsArrowMoved(true); // Set the state to indicate the arrow is moved
+    setTimeout(() => {
+      setIsArrowMoved(false); // Reset the state after 1 second
+      window.location.reload(); // Reload the page
+    });
+  };
 
-            <main>
-                <section id={styles.room2}>
-                    <p>Room 2</p>
-                </section>
-                <section id={styles.room1}>
-                    <p>Room 1</p>
-                </section>
-                <button id={styles.button1}>Move to Next Room</button>
-            </main>
+  return (
+    <div className={styles.container}>
+      <Head>
+        <title>InnerMap</title>
+        <link rel="icon" href="logo.ico" />
+        <title className={`dancing-script-${styles.uniquifier}`}>
+          InnerMap
+        </title>
+      </Head>
 
-            <footer>
-                <a
-                    href="https://vercel.com?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-                    target="_blank"
-                    rel="noopener noreferrer">
-                    Powered by{" "}
-                    <img
-                        src="/vercel.svg"
-                        alt="Vercel"
-                        className={styles.logo}
-                    />
-                </a>
-            </footer>
+      <nav id={styles.navbar}>
+        <h1 id={styles.title}>InnerMaps</h1>
+      </nav>
 
-            <style jsx>{`
-                main {
-                    padding: 5rem 0;
-                    flex: 1;
-                    display: flex;
-                    flex-direction: column;
-                    justify-content: center;
-                    align-items: center;
-                }
-                footer {
-                    width: 100%;
-                    height: 100px;
-                    border-top: 1px solid #000;
-                    display: flex;
-                    justify-content: center;
-                    align-items: center;
-                    color: #000;
-                }
-                footer img {
-                    margin-left: 0.5rem;
-                }
-                footer a {
-                    display: flex;
-                    justify-content: center;
-                    align-items: center;
-                    text-decoration: none;
-                    color: inherit;
-                }
-                code {
-                    background: #fafafa;
-                    border-radius: 5px;
-                    padding: 0.75rem;
-                    font-size: 1.1rem;
-                    font-family: Menlo, Monaco, Lucida Console, Liberation Mono,
-                        DejaVu Sans Mono, Bitstream Vera Sans Mono, Courier New,
-                        monospace;
-                }
-            `}</style>
+      <div
+        className={`${styles.arrowContainer} ${
+          isArrowMoved ? styles.moveUp : ""
+        }`}
+        id="arrowContainer">
+        <img
+          src="/right-arrow-in-a-circle.png"
+          alt="Blue arrow icon"
+          className={styles.arrow}
+        />
+      </div>
 
-            <style jsx global>{`
-                html,
-                body {
-                    padding: 0;
-                    margin: 0;
-                    font-family: -apple-system, BlinkMacSystemFont, Segoe UI,
-                        Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans,
-                        Helvetica Neue, sans-serif;
-                }
-                * {
-                    box-sizing: border-box;
-                }
-            `}</style>
+      <main>
+        <section id={styles.room2}>
+          <p>Room 2</p>
+        </section>
+        <section id={styles.room1}>
+          <p>Room 1</p>
+        </section>
+        <div className={styles.buttoncontainer}>
+          <button onClick={moveArrowback} id={styles.button1}>
+            Move to Previous Room
+          </button>
+          <button onClick={moveArrow} id={styles.button2}>
+            Move to Next Room
+          </button>
         </div>
-    );
+      </main>
+
+      <footer>
+        <a
+          href="https://vercel.com?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
+          target="_blank"
+          rel="noopener noreferrer">
+          Powered by{" "}
+          <img src="/vercel.svg" alt="Vercel" className={styles.logo} />
+        </a>
+      </footer>
+
+      <style jsx>{`
+        main {
+          padding: 5rem 0;
+          flex: 1;
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          align-items: center;
+        }
+        footer {
+          width: 100%;
+          height: 100px;
+          border-top: 1px solid #000;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          color: #000;
+        }
+        footer img {
+          margin-left: 0.5rem;
+        }
+        footer a {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          text-decoration: none;
+          color: inherit;
+        }
+        code {
+          background: #fafafa;
+          border-radius: 5px;
+          padding: 0.75rem;
+          font-size: 1.1rem;
+          font-family: Menlo, Monaco, Lucida Console, Liberation Mono,
+            DejaVu Sans Mono, Bitstream Vera Sans Mono, Courier New, monospace;
+        }
+      `}</style>
+
+      <style jsx global>{`
+        html,
+        body {
+          padding: 0;
+          margin: 0;
+          font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto,
+            Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue,
+            sans-serif;
+        }
+        * {
+          box-sizing: border-box;
+        }
+      `}</style>
+    </div>
+  );
 }

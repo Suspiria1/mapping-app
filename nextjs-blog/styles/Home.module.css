@@ -66,6 +66,8 @@
     50% - 32.5px
   ); /* Adjust this value to horizontally center the arrow */
   z-index: 5; /* Ensure the arrow appears above other content */
+  animation: moveUpAnimation 3s ease;
+  animation-fill-mode: forwards;
 }
 
 .arrow {
@@ -75,12 +77,39 @@
 }
 
 #button1 {
-  position: fixed;
-  bottom: 15%;
   width: 160px;
   height: 70px;
   background-color: #a0ddff;
   color: #fff;
   border-radius: 0.5rem;
   color: #000;
+  display: inline;
+  z-index: 1;
+  margin: 10px;
+}
+
+#button2 {
+  width: 160px;
+  height: 70px;
+  background-color: #a0ddff;
+  color: #fff;
+  border-radius: 0.5rem;
+  color: #000;
+  display: inline;
+  z-index: 1;
+  margin: 10px;
+}
+
+.buttoncontainer {
+  position: fixed;
+  bottom: 15%;
+}
+
+@keyframes moveUpAnimation {
+  0% {
+    transform: translateY(0);
+  }
+  100% {
+    transform: translateY(-150px);
+  }
 }
