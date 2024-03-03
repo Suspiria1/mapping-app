@@ -75,7 +75,7 @@ export default function Home() {
             });
             setTransitionDuration(duration / 2); // Remaining half of the total duration for movement
             setShowLine(true);
-        }, duration / 2); // Start moving after rotation completes
+        }, duration / 4); // Start moving after rotation completes
     };
 
     const handleMoveToPreviousRoom = () => {
@@ -94,7 +94,7 @@ export default function Home() {
         setRotationAngle(rotationAngle);
 
         // Update transition duration for rotation
-        setTransitionDuration(duration / 2); // Half of the total duration
+        setTransitionDuration(duration / 4); // Half of the total duration
 
         // Move the arrow back to Room 1's center point
         setTimeout(() => {
@@ -104,7 +104,7 @@ export default function Home() {
             });
             setTransitionDuration(duration / 2); // Remaining half of the total duration for movement
             setShowLine(true);
-        }, duration / 2); // Start moving after rotation completes
+        }, duration / 4); // Start moving after rotation completes
     };
 
     const handleTransitionEnd = () => {
@@ -117,7 +117,7 @@ export default function Home() {
                 <title>InnerMap</title>
                 <link rel="icon" href="logo.ico" />
                 <title className={`dancing-script-${styles.uniquifier}`}>
-                    InnerMap
+                    InnerMaps
                 </title>
             </Head>
 
@@ -131,38 +131,19 @@ export default function Home() {
                     position: "absolute",
                     top: `${arrowPosition.top}px`,
                     left: `${arrowPosition.left}px`,
+                    zIndex: 5,
                     transition: `top ${transitionDuration / 1000}s ease, left ${
                         transitionDuration / 1000
                     }s ease, transform ${transitionDuration / 1000}s ease`,
-                    transform: `rotate(${rotationAngle}deg)`,
+                    transform: `rotate(${rotationAngle}deg)`, // Apply rotation transform
                 }}
                 onTransitionEnd={handleTransitionEnd}>
                 <img
-                    src="/right-arrow.png"
+                    src="/right-arrow (2).png"
                     alt="Right arrow icon"
                     className={styles.arrow}
                 />
             </div>
-
-            {showLine && (
-                <svg
-                    id="lineContainer"
-                    style={{
-                        position: "absolute",
-                        zIndex: 4,
-                    }}
-                    width="100%"
-                    height="100%">
-                    <line
-                        x1={room1Center.x}
-                        y1={room1Center.y}
-                        x2={room2Center.x}
-                        y2={room2Center.y}
-                        stroke="black"
-                        strokeWidth="5"
-                    />
-                </svg>
-            )}
 
             <main>
                 <section id={styles.room2}>
