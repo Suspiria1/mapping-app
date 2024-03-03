@@ -1,24 +1,51 @@
 import Head from "next/head";
 import styles from "../styles/Home.module.css";
 import Link from "next/link";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 
 export default function Home() {
-    const [isArrowMoved, setIsArrowMoved] = useState(false);
+    const [room1Center, setRoom1Center] = useState({ x: 0, y: 0 });
+    const [room2Center, setRoom2Center] = useState({ x: 0, y: 0 });
+    const [arrowPosition, setArrowPosition] = useState({ top: 0, left: 0 });
 
-    const moveArrow = () => {
-        setIsArrowMoved(true); // Set the state to indicate the arrow is moved
-        setTimeout(() => {
-            setIsArrowMoved(false); // Reset the state after 1 second
-            window.location.reload(); // Reload the page
+    useEffect(() => {
+        // Calculate and set the center point of Room 1 when component mounts
+        const room1 = document.getElementById(styles.room1);
+        if (room1) {
+            const room1Rect = room1.getBoundingClientRect();
+            const room1CenterX = room1Rect.left + room1Rect.width / 2;
+            const room1CenterY = room1Rect.top + room1Rect.height / 2;
+            setRoom1Center({ x: room1CenterX, y: room1CenterY });
+            // Initialize arrow's position to be at Room 1's center
+            setArrowPosition({
+                top: room1CenterY - 32.5,
+                left: room1CenterX - 32.5,
+            });
+        }
+
+        // Calculate and set the center point of Room 2 when component mounts
+        const room2 = document.getElementById(styles.room2);
+        if (room2) {
+            const room2Rect = room2.getBoundingClientRect();
+            const room2CenterX = room2Rect.left + room2Rect.width / 2;
+            const room2CenterY = room2Rect.top + room2Rect.height / 2;
+            setRoom2Center({ x: room2CenterX, y: room2CenterY });
+        }
+    }, []);
+
+    const handleMoveToNextRoom = () => {
+        // Move the arrow to Room 2's center point
+        setArrowPosition({
+            top: room2Center.y - 32.5,
+            left: room2Center.x - 32.5,
         });
     };
 
-    const moveArrowback = () => {
-        setIsArrowMoved(true); // Set the state to indicate the arrow is moved
-        setTimeout(() => {
-            setIsArrowMoved(false); // Reset the state after 1 second
-            window.location.reload(); // Reload the page
+    const handleMoveToPreviousRoom = () => {
+        // Move the arrow back to Room 1's center point
+        setArrowPosition({
+            top: room1Center.y - 32.5,
+            left: room1Center.x - 32.5,
         });
     };
 
@@ -37,10 +64,12 @@ export default function Home() {
             </nav>
 
             <div
-                className={`${styles.arrowContainer} ${
-                    isArrowMoved ? styles.moveUp : ""
-                }`}
-                id="arrowContainer">
+                id="arrowContainer"
+                style={{
+                    position: "absolute",
+                    top: `${arrowPosition.top}px`,
+                    left: `${arrowPosition.left}px`,
+                }}>
                 <img
                     src="/right-arrow-in-a-circle.png"
                     alt="Blue arrow icon"
@@ -56,10 +85,12 @@ export default function Home() {
                     <p>Room 1</p>
                 </section>
                 <div className={styles.buttoncontainer}>
-                    <button onClick={moveArrowback} id={styles.button1}>
+                    <button
+                        id={styles.button1}
+                        onClick={handleMoveToPreviousRoom}>
                         Move to Previous Room
                     </button>
-                    <button onClick={moveArrow} id={styles.button2}>
+                    <button id={styles.button2} onClick={handleMoveToNextRoom}>
                         Move to Next Room
                     </button>
                 </div>
