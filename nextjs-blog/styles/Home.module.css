@@ -1,6 +1,5 @@
 .container {
     min-height: 100vh;
-    padding: 0 0.5rem;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -74,13 +73,13 @@
         50% + 15px
     ); /* Adjust this value to vertically center the arrow */
     left: calc(
-        50% - 32.5px
+        50% - 22.5px
     ); /* Adjust this value to horizontally center the arrow */
     z-index: 5; /* Ensure the arrow appears above other content */
 }
 
 .arrow {
-    width: 65px;
+    width: 45px;
     height: auto;
     transform: rotate(-90deg);
 }

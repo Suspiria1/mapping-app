@@ -7,6 +7,8 @@ export default function Home() {
     const [room1Center, setRoom1Center] = useState({ x: 0, y: 0 });
     const [room2Center, setRoom2Center] = useState({ x: 0, y: 0 });
     const [arrowPosition, setArrowPosition] = useState({ top: 0, left: 0 });
+    const [transitionDuration, setTransitionDuration] = useState(0);
+    const [showLine, setShowLine] = useState(false);
 
     useEffect(() => {
         // Calculate and set the center point of Room 1 when component mounts
@@ -18,8 +20,8 @@ export default function Home() {
             setRoom1Center({ x: room1CenterX, y: room1CenterY });
             // Initialize arrow's position to be at Room 1's center
             setArrowPosition({
-                top: room1CenterY - 32.5,
-                left: room1CenterX - 32.5,
+                top: room1CenterY - 22.5,
+                left: room1CenterX - 22.5,
             });
         }
 
@@ -33,20 +35,53 @@ export default function Home() {
         }
     }, []);
 
+    const calculateTransitionDuration = (distance) => {
+        // Calculate the duration based on the distance and speed (75px per second)
+        return (Math.abs(distance) / 75) * 1000; // Convert seconds to milliseconds
+    };
+
     const handleMoveToNextRoom = () => {
+        // Calculate the distance to move the arrow to Room 2
+        const distanceX = room2Center.x - arrowPosition.left;
+        const distanceY = room2Center.y - arrowPosition.top;
+        const distance = Math.sqrt(
+            distanceX * distanceX + distanceY * distanceY
+        );
+
+        // Calculate transition duration based on distance and speed
+        const duration = calculateTransitionDuration(distance);
+
         // Move the arrow to Room 2's center point
         setArrowPosition({
-            top: room2Center.y - 32.5,
-            left: room2Center.x - 32.5,
+            top: room2Center.y - 22.5,
+            left: room2Center.x - 22.5,
         });
+        setTransitionDuration(duration);
+        setShowLine(true);
     };
 
     const handleMoveToPreviousRoom = () => {
+        // Calculate the distance to move the arrow to Room 1
+        const distanceX = room1Center.x - arrowPosition.left;
+        const distanceY = room1Center.y - arrowPosition.top;
+        const distance = Math.sqrt(
+            distanceX * distanceX + distanceY * distanceY
+        );
+
+        // Calculate transition duration based on distance and speed
+        const duration = calculateTransitionDuration(distance);
+
         // Move the arrow back to Room 1's center point
         setArrowPosition({
-            top: room1Center.y - 32.5,
-            left: room1Center.x - 32.5,
+            top: room1Center.y - 22.5,
+            left: room1Center.x - 22.5,
         });
+        setTransitionDuration(duration);
+        setShowLine(true);
+    };
+
+    const handleTransitionEnd = () => {
+        setShowLine(false);
     };
 
     return (
@@ -67,16 +102,40 @@ export default function Home() {
                 id="arrowContainer"
                 style={{
                     position: "absolute",
+                    zIndex: 5,
                     top: `${arrowPosition.top}px`,
                     left: `${arrowPosition.left}px`,
-                    transition: "top 2s ease-out, left 2s ease-out",
-                }}>
+                    transition: `top ${transitionDuration / 1000}s ease, left ${
+                        transitionDuration / 1000
+                    }s ease`,
+                }}
+                onTransitionEnd={handleTransitionEnd}>
                 <img
-                    src="/right-arrow-in-a-circle.png"
+                    src="/right-arrow.png"
                     alt="Blue arrow icon"
                     className={styles.arrow}
                 />
             </div>
+
+            {showLine && (
+                <svg
+                    id="lineContainer"
+                    style={{
+                        position: "absolute",
+                        zIndex: 3,
+                    }}
+                    width="100%"
+                    height="100%">
+                    <line
+                        x1={room1Center.x}
+                        y1={room1Center.y}
+                        x2={room2Center.x}
+                        y2={room2Center.y}
+                        stroke="blue"
+                        strokeWidth="5"
+                    />
+                </svg>
+            )}
 
             <main>
                 <section id={styles.room2}>
