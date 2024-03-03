@@ -14,6 +14,14 @@ export default function Home() {
         });
     };
 
+    const moveArrowback = () => {
+        setIsArrowMoved(true); // Set the state to indicate the arrow is moved
+        setTimeout(() => {
+            setIsArrowMoved(false); // Reset the state after 1 second
+            window.location.reload(); // Reload the page
+        });
+    };
+
     return (
         <div className={styles.container}>
             <Head>
