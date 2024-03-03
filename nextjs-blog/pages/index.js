@@ -69,6 +69,7 @@ export default function Home() {
                     position: "absolute",
                     top: `${arrowPosition.top}px`,
                     left: `${arrowPosition.left}px`,
+                    transition: "top 2s ease-out, left 2s ease-out",
                 }}>
                 <img
                     src="/right-arrow-in-a-circle.png"
