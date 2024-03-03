@@ -9,6 +9,7 @@ export default function Home() {
     const [arrowPosition, setArrowPosition] = useState({ top: 0, left: 0 });
     const [transitionDuration, setTransitionDuration] = useState(0);
     const [showLine, setShowLine] = useState(false);
+    const [rotationAngle, setRotationAngle] = useState(90); // Initial rotation angle
 
     useEffect(() => {
         // Calculate and set the center point of Room 1 when component mounts
@@ -40,6 +41,14 @@ export default function Home() {
         return (Math.abs(distance) / 75) * 1000; // Convert seconds to milliseconds
     };
 
+    const calculateRotationAngle = (fromPoint, toPoint) => {
+        // Calculate the angle of the arrow using trigonometry
+        const deltaX = toPoint.x - fromPoint.x;
+        const deltaY = toPoint.y - fromPoint.y;
+        const angle = Math.atan2(deltaY, deltaX) * (180 / Math.PI);
+        return angle >= 0 ? angle : 360 + angle; // Ensure angle is between 0 and 360 degrees
+    };
+
     const handleMoveToNextRoom = () => {
         // Calculate the distance to move the arrow to Room 2
         const distanceX = room2Center.x - arrowPosition.left;
@@ -51,13 +60,22 @@ export default function Home() {
         // Calculate transition duration based on distance and speed
         const duration = calculateTransitionDuration(distance);
 
+        // Calculate and set the rotation angle for the arrow
+        const rotationAngle = calculateRotationAngle(room1Center, room2Center);
+        setRotationAngle(rotationAngle);
+
+        // Update transition duration for rotation
+        setTransitionDuration(duration / 2); // Half of the total duration
+
         // Move the arrow to Room 2's center point
-        setArrowPosition({
-            top: room2Center.y - 22.5,
-            left: room2Center.x - 22.5,
-        });
-        setTransitionDuration(duration);
-        setShowLine(true);
+        setTimeout(() => {
+            setArrowPosition({
+                top: room2Center.y - 22.5,
+                left: room2Center.x - 22.5,
+            });
+            setTransitionDuration(duration / 2); // Remaining half of the total duration for movement
+            setShowLine(true);
+        }, duration / 2); // Start moving after rotation completes
     };
 
     const handleMoveToPreviousRoom = () => {
@@ -71,13 +89,22 @@ export default function Home() {
         // Calculate transition duration based on distance and speed
         const duration = calculateTransitionDuration(distance);
 
+        // Calculate and set the rotation angle for the arrow
+        const rotationAngle = calculateRotationAngle(room2Center, room1Center);
+        setRotationAngle(rotationAngle);
+
+        // Update transition duration for rotation
+        setTransitionDuration(duration / 2); // Half of the total duration
+
         // Move the arrow back to Room 1's center point
-        setArrowPosition({
-            top: room1Center.y - 22.5,
-            left: room1Center.x - 22.5,
-        });
-        setTransitionDuration(duration);
-        setShowLine(true);
+        setTimeout(() => {
+            setArrowPosition({
+                top: room1Center.y - 22.5,
+                left: room1Center.x - 22.5,
+            });
+            setTransitionDuration(duration / 2); // Remaining half of the total duration for movement
+            setShowLine(true);
+        }, duration / 2); // Start moving after rotation completes
     };
 
     const handleTransitionEnd = () => {
@@ -102,17 +129,17 @@ export default function Home() {
                 id="arrowContainer"
                 style={{
                     position: "absolute",
-                    zIndex: 5,
                     top: `${arrowPosition.top}px`,
                     left: `${arrowPosition.left}px`,
                     transition: `top ${transitionDuration / 1000}s ease, left ${
                         transitionDuration / 1000
-                    }s ease`,
+                    }s ease, transform ${transitionDuration / 1000}s ease`,
+                    transform: `rotate(${rotationAngle}deg)`,
                 }}
                 onTransitionEnd={handleTransitionEnd}>
                 <img
                     src="/right-arrow.png"
-                    alt="Blue arrow icon"
+                    alt="Right arrow icon"
                     className={styles.arrow}
                 />
             </div>
@@ -122,7 +149,7 @@ export default function Home() {
                     id="lineContainer"
                     style={{
                         position: "absolute",
-                        zIndex: 3,
+                        zIndex: 4,
                     }}
                     width="100%"
                     height="100%">
@@ -131,7 +158,7 @@ export default function Home() {
                         y1={room1Center.y}
                         x2={room2Center.x}
                         y2={room2Center.y}
-                        stroke="blue"
+                        stroke="black"
                         strokeWidth="5"
                     />
                 </svg>
