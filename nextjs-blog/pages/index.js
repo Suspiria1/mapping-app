@@ -24,6 +24,7 @@ export default function Home() {
         top: room1CenterY - 22.5,
         left: room1CenterX - 22.5,
       });
+      alert(room1CenterX, room1CenterY);
     }
 
     // Calculate and set the center point of Room 2 when component mounts
@@ -121,29 +122,35 @@ export default function Home() {
         <h1 id={styles.title}>InnerMaps</h1>
       </nav>
 
+      <figure>
+        <img src="../bluecircle.png" alt="blue circle"></img>
+      </figure>
+
       <main>
-        <div className={styles.rowClass1}>
-          <div className={styles.class}>Room 3</div>
-          <div className={styles.hallway}>H12</div>
-          <div className={styles.hallway}>H11</div>
-          <div className={styles.hallway}>H10</div>
-          <div className={styles.class}>Room 5</div>
-        </div>
+        <div className={styles.classcontainer}>
+          <div className={styles.rowClass1}>
+            <div className={styles.class}>Room 3</div>
+            <div className={styles.hallway}>H12</div>
+            <div className={styles.hallway}>H11</div>
+            <div className={styles.hallway}>H10</div>
+            <div className={styles.class}>Room 5</div>
+          </div>
 
-        <div className={styles.rowClass2}>
-          <div className={styles.class}>Room 1</div>
-          <div className={styles.hallway}>H1</div>
-          <div className={styles.hallway}>H2</div>
-          <div className={styles.hallway}>H3</div>
-        </div>
+          <div className={styles.rowClass2}>
+            <div className={styles.class}>Room 1</div>
+            <div className={styles.hallway}>H1</div>
+            <div className={styles.hallway}>H2</div>
+            <div className={styles.hallway}>H3</div>
+          </div>
 
-        <div className={styles.rowClass3}>
-          <div className={styles.class}>Room 2</div>
-          <div className={styles.hallway}>H4</div>
-          <div className={styles.hallway}>H5</div>
-          <div className={styles.hallway}>H6</div>
-          <div className={styles.hallway}>H7</div>
-          <div className={styles.class}>Room 4</div>
+          <div className={styles.rowClass3}>
+            <div className={styles.class}>Room 2</div>
+            <div className={styles.hallway}>H4</div>
+            <div className={styles.hallway}>H5</div>
+            <div className={styles.hallway}>H6</div>
+            <div className={styles.hallway}>H7</div>
+            <div className={styles.class}>Room 4</div>
+          </div>
         </div>
       </main>
 
