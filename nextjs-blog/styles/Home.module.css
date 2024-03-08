@@ -1,112 +1,85 @@
 .container {
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
 .logo {
-    height: 1em;
+  height: 1em;
 }
 
 .container {
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    background-color: #efeeee; /* Change to your desired background color */
-    color: white; /* Text color */
-    margin: 0;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: #efeeee; /* Change to your desired background color */
+  color: white; /* Text color */
+  margin: 0;
 }
 
 .main {
-    padding-bottom: 5rem;
-    text-align: center;
+  padding-bottom: 5rem;
+  text-align: center;
+  overflow: scroll;
 }
 
 .footer {
-    width: 100%;
-    height: 100px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-color: #a0ddff; /* Footer background color */
-    color: white; /* Footer text color */
-}
-#room2 {
-    border: 2px solid #000;
-    width: 100px;
-    height: 100px;
-    background-color: #fff;
-    color: #000;
-    display: inline-block;
-    padding: 20px;
-}
-
-#room1 {
-    border: 2px solid #000;
-    width: 100px;
-    height: 100px;
-    background-color: #fff;
-    color: #000;
-    display: inline-block;
-    padding: 20px;
-    margin-top: 50px;
+  width: 100%;
+  height: 100px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #a0ddff; /* Footer background color */
+  color: white; /* Footer text color */
 }
 
 #navbar {
-    background-color: #a0ddff;
-    width: 100%;
-    float: left;
+  background-color: #a0ddff;
+  width: 100%;
+  float: left;
 }
 
 #title {
-    color: #000;
-    margin: 10px;
+  color: #000;
+  margin: 10px;
+}
+.rowClass1 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
-.arrowContainer {
-    position: absolute;
-    top: calc(
-        50% + 15px
-    ); /* Adjust this value to vertically center the arrow */
-    left: calc(
-        50% - 22.5px
-    ); /* Adjust this value to horizontally center the arrow */
-    z-index: 5; /* Ensure the arrow appears above other content */
+.class {
+  width: 100px;
+  height: 100px;
+  border: #000 4px solid;
+  color: #000;
+  background-color: #fff;
+  display: inline-block;
 }
 
-.arrow {
-    width: 45px;
-    height: auto;
+.hallway {
+  width: 100px;
+  height: 100px;
+  border: #000 1px dashed;
+  color: #000;
+  background-color: #fff;
+  display: inline-block;
 }
 
-#button1 {
-    position: relative;
-    bottom: 15%;
-    width: 160px;
-    height: 70px;
-    background-color: #a0ddff;
-    color: #fff;
-    border-radius: 0.5rem;
-    color: #000;
+.rowClass2 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transform: translateX(-350px);
 }
-
-#button2 {
-    width: 160px;
-    height: 70px;
-    background-color: #a0ddff;
-    color: #fff;
-    border-radius: 0.5rem;
-    color: #000;
-    display: inline;
-    z-index: 1;
-    margin: 10px;
-}
-
-.buttoncontainer {
-    position: fixed;
-    bottom: 15%;
+.rowClass3 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transform: translateX(50px);
 }
