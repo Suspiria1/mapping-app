@@ -1,86 +1,92 @@
 .container {
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 
 .logo {
-  height: 1em;
+    height: 1em;
 }
 
 .container {
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  background-color: #efeeee; /* Change to your desired background color */
-  color: white; /* Text color */
-  margin: 0;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: #efeeee; /* Change to your desired background color */
+    color: white; /* Text color */
+    margin: 0;
 }
 
 .main {
-  padding-bottom: 5rem;
-  text-align: center;
-  overflow-y: scroll;
+    padding-bottom: 5rem;
+    text-align: center;
+    overflow-y: scroll;
 }
 
 .footer {
-  width: 100%;
-  height: 100px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background-color: #a0ddff; /* Footer background color */
-  color: white; /* Footer text color */
+    width: 100%;
+    height: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #a0ddff; /* Footer background color */
+    color: white; /* Footer text color */
 }
 
 #navbar {
-  background-color: #a0ddff;
-  width: 100%;
-  float: left;
+    background-color: #a0ddff;
+    width: 100%;
+    float: left;
 }
 
 #title {
-  color: #000;
-  margin: 10px;
+    color: #000;
+    margin: 10px;
 }
 .rowClass1 {
-  display: flex;
-  justify-content: center;
-  align-items: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .class {
-  width: 100px;
-  height: 100px;
-  border: #000 4px solid;
-  color: #000;
-  background-color: #fff;
-  display: inline-block;
+    width: 100px;
+    height: 100px;
+    border: #000 4px solid;
+    color: #000;
+    background-color: #fff;
+    display: inline-block;
+    font-size: 16px;
 }
 
 .hallway {
-  width: 100px;
-  height: 100px;
-  border-top: #000 1px dashed;
-  border-bottom: #000 1px dashed;
-  color: #000;
-  background-color: #fff;
-  display: inline-block;
+    width: 100px;
+    height: 100px;
+    border-top: #000 1px dashed;
+    border-bottom: #000 1px dashed;
+    color: #000;
+    background-color: #fff;
+    display: inline-block;
 }
 
 .rowClass2 {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  transform: translateX(-350px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transform: translateX(-350px);
 }
 .rowClass3 {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  transform: translateX(50px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transform: translateX(50px);
+}
+
+.userCircles {
+    width: 65px;
+    height: 65px;
 }
