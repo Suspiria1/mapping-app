@@ -2,12 +2,38 @@ import Head from "next/head";
 import styles from "../styles/Home.module.css";
 import React, { useEffect, useState } from "react";
 
-const room1CenterPoint = { x: 195, y: 295 };
-const room2CenterPoint = { x: 495, y: 395 };
-const room3CenterPoint = { x: 495, y: 195 };
-const room4CenterPoint = { x: 895, y: 195 };
-const room5CenterPoint = { x: 995, y: 395 };
+const roomCoordinates = {
+    "Room 1": { x: 195, y: 295 },
+    "Room 2": { x: 495, y: 395 },
+    "Room 3": { x: 495, y: 195 },
+    "Room 4": { x: 995, y: 395 },
+    "Room 5": { x: 895, y: 195 },
+};
+
 export default function Home() {
+    const [circlePosition, setCirclePosition] = useState(
+        roomCoordinates["Room 1"]
+    );
+    const [transitionEnabled, setTransitionEnabled] = useState(false);
+
+    const handleRoomClick = (room) => {
+        setTransitionEnabled(true);
+        setTimeout(() => {
+            setCirclePosition(roomCoordinates[room]);
+        }, 100);
+    };
+
+    useEffect(() => {
+        setTransitionEnabled(true);
+    }, [circlePosition]);
+
+    const circleStyle = {
+        position: "absolute",
+        top: `${circlePosition.y}px`,
+        left: `${circlePosition.x}px`,
+        transition: transitionEnabled ? "top 1s, left 1s" : "none",
+        zIndex: 10,
+    };
     return (
         <div className={styles.container}>
             <Head>
@@ -22,13 +48,7 @@ export default function Home() {
                 <h1 id={styles.title}>InnerMaps</h1>
             </nav>
 
-            <figure
-                style={{
-                    position: "absolute",
-                    top: `${room1CenterPoint.y}px`,
-                    left: `${room1CenterPoint.x}px`,
-                    zIndex: 10,
-                }}>
+            <figure style={circleStyle}>
                 <img
                     className={styles.userCircles}
                     src="../bluecircle.png"
@@ -39,27 +59,47 @@ export default function Home() {
             <main>
                 <div className={styles.classcontainer}>
                     <div className={styles.rowClass1}>
-                        <button className={styles.class}>Room 3</button>
+                        <button
+                            className={styles.class}
+                            onClick={() => handleRoomClick("Room 3")}>
+                            Room 3
+                        </button>
                         <div className={styles.hallway}>H12</div>
                         <div className={styles.hallway}>H11</div>
                         <div className={styles.hallway}>H10</div>
-                        <button className={styles.class}>Room 5</button>
+                        <button
+                            className={styles.class}
+                            onClick={() => handleRoomClick("Room 5")}>
+                            Room 5
+                        </button>
                     </div>
 
                     <div className={styles.rowClass2}>
-                        <button className={styles.class}>Room 1</button>
+                        <button
+                            className={styles.class}
+                            onClick={() => handleRoomClick("Room 1")}>
+                            Room 1
+                        </button>
                         <div className={styles.hallway}>H1</div>
                         <div className={styles.hallway}>H2</div>
                         <div className={styles.hallway}>H3</div>
                     </div>
 
                     <div className={styles.rowClass3}>
-                        <button className={styles.class}>Room 2</button>
+                        <button
+                            className={styles.class}
+                            onClick={() => handleRoomClick("Room 2")}>
+                            Room 2
+                        </button>
                         <div className={styles.hallway}>H4</div>
                         <div className={styles.hallway}>H5</div>
                         <div className={styles.hallway}>H6</div>
                         <div className={styles.hallway}>H7</div>
-                        <button className={styles.class}>Room 4</button>
+                        <button
+                            className={styles.class}
+                            onClick={() => handleRoomClick("Room 4")}>
+                            Room 4
+                        </button>
                     </div>
                 </div>
             </main>
