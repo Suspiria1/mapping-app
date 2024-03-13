@@ -8,7 +8,38 @@ const roomCoordinates = {
     "Room 3": { x: 495, y: 195 },
     "Room 4": { x: 995, y: 395 },
     "Room 5": { x: 895, y: 195 },
+    "HW 1": { x: 295, y: 295 },
+    "HW 2": { x: 395, y: 295 },
+    "HW 3": { x: 495, y: 295 },
+    "HW 4": { x: 595, y: 395 },
+    "HW 5": { x: 695, y: 395 },
+    "HW 6": { x: 795, y: 395 },
+    "HW 7": { x: 895, y: 395 },
+    "HW 8": { x: 595, y: 195 },
+    "HW 9": { x: 695, y: 195 },
+    "HW 10": { x: 795, y: 195 },
 };
+
+const R1toR2 = ["Room 1", "HW 1", "HW 2", "HW 3", "Room 2"];
+const R1toR3 = ["Room 1", "HW 1", "HW 2", "HW 3", "Room 3"];
+const R1toR5 = ["Room 1", "HW 1", "HW 2", "HW 3", "Room 3"];
+const R1toR4 = ["Room 1", "HW 1", "HW 2", "HW 3", "Room 3"];
+const R2toR1 = ["Room 1", "HW 1", "HW 2", "HW 3", "Room 3"];
+const R2toR3 = ["Room 1", "HW 1", "HW 2", "HW 3", "Room 3"];
+const R2toR4 = ["Room 1", "HW 1", "HW 2", "HW 3", "Room 3"];
+const R2toR5 = ["Room 1", "HW 1", "HW 2", "HW 3", "Room 3"];
+const R3toR1 = ["Room 1", "HW 1", "HW 2", "HW 3", "Room 3"];
+const R3toR2 = ["Room 1", "HW 1", "HW 2", "HW 3", "Room 3"];
+const R3toR4 = ["Room 1", "HW 1", "HW 2", "HW 3", "Room 3"];
+const R3toR5 = ["Room 1", "HW 1", "HW 2", "HW 3", "Room 3"];
+const R4toR1 = ["Room 1", "HW 1", "HW 2", "HW 3", "Room 3"];
+const R4toR2 = ["Room 1", "HW 1", "HW 2", "HW 3", "Room 3"];
+const R4toR3 = ["Room 1", "HW 1", "HW 2", "HW 3", "Room 3"];
+const R4toR5 = ["Room 1", "HW 1", "HW 2", "HW 3", "Room 3"];
+const R5toR1 = ["Room 1", "HW 1", "HW 2", "HW 3", "Room 3"];
+const R5toR2 = ["Room 1", "HW 1", "HW 2", "HW 3", "Room 3"];
+const R5toR3 = ["Room 1", "HW 1", "HW 2", "HW 3", "Room 3"];
+const R5toR4 = ["Room 5", "HW 10", "HW 11", "HW 12", "Room 3, HW 3, Room 2"];
 
 export default function Home() {
     const [circlePosition, setCirclePosition] = useState(
@@ -64,8 +95,8 @@ export default function Home() {
                             onClick={() => handleRoomClick("Room 3")}>
                             Room 3
                         </button>
-                        <div className={styles.hallway}>H12</div>
-                        <div className={styles.hallway}>H11</div>
+                        <div className={styles.hallway}>H8</div>
+                        <div className={styles.hallway}>H9</div>
                         <div className={styles.hallway}>H10</div>
                         <button
                             className={styles.class}
