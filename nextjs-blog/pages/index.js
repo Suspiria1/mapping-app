@@ -20,124 +20,138 @@ const roomCoordinates = {
     "HW 10": { x: 795, y: 195 },
 };
 
-const R1toR2 = ["Room 1", "HW 1", "HW 2", "HW 3", "Room 2"];
-const R1toR3 = ["Room 1", "HW 1", "HW 2", "HW 3", "Room 3"];
-const R1toR5 = [
-    "Room 1",
-    "HW 1",
-    "HW 2",
-    "HW 3",
-    "Room 3",
-    "HW 8",
-    "HW 9",
-    "HW 10",
-    "Room 5",
-];
-const R1toR4 = [
-    "Room 1",
-    "HW 1",
-    "HW 2",
-    "HW 3",
-    "Room 2",
-    "HW 4",
-    "HW 5",
-    "HW 6",
-    "HW 7",
-    "Room 4",
-];
-const R2toR1 = ["Room 2", "HW 3", "HW 2", "HW 1", "Room 1"];
-const R2toR3 = ["Room 2", "HW 3", "Room 3"];
-const R2toR4 = ["Room 2", "HW 4", "HW 5", "HW 6", "HW 7", "Room 4"];
-const R2toR5 = ["Room 2", "HW 3", "Room 3", "HW 8", "HW 9", "HW 10", "Room 5"];
-const R3toR1 = ["Room 3", "HW 3", "HW 2", "HW 1", "Room 1"];
-const R3toR2 = ["Room 3", "HW 3", "Room 2"];
-const R3toR4 = [
-    "Room 3",
-    "HW 3",
-    "Room 2",
-    "HW 4",
-    "HW 5",
-    "HW 6",
-    "HW 7",
-    "Room 4",
-];
-const R3toR5 = ["Room 3", "HW 8", "HW 9", "HW 10", "Room 5"];
-const R4toR1 = [
-    "Room 4",
-    "HW 7",
-    "HW 6",
-    "HW 5",
-    "HW 4",
-    "Room 2",
-    "HW 3",
-    "HW 2",
-    "HW 1",
-    "Room 1",
-];
-const R4toR2 = ["Room 4", "HW 7", "HW 6", "HW 5", "HW 4", "Room 2"];
-const R4toR3 = [
-    "Room 4",
-    "HW 7",
-    "HW 6",
-    "HW 5",
-    "HW 4",
-    "Room 2",
-    "HW 3",
-    "Room 3",
-];
-const R4toR5 = [
-    "Room 4",
-    "HW 7",
-    "HW 6",
-    "HW 5",
-    "HW 4",
-    "Room 2",
-    "HW 3",
-    "Room 3",
-    "HW 8",
-    "HW 9",
-    "HW 10",
-    "Room 5",
-];
-const R5toR1 = [
-    "Room 5",
-    "HW 10",
-    "HW 9",
-    "HW 8",
-    "Room 3",
-    "HW 3",
-    "HW 2",
-    "HW 1",
-    "Room 1",
-];
-const R5toR2 = ["Room 5", "HW 10", "HW 9", "HW 8", "Room 3", "HW 3", "Room 2"];
-const R5toR3 = ["Room 5", "HW 10", "HW 9", "HW 8", "Room 3"];
-const R5toR4 = [
-    "Room 5",
-    "HW 10",
-    "HW 9",
-    "HW 8",
-    "Room 3",
-    "HW 3",
-    "Room 2",
-    "HW 4",
-    "HW 5",
-    "HW 6",
-    "HW 7",
-    "Room 4",
-];
+const paths = {
+    R1toR2: ["Room 1", "HW 1", "HW 2", "HW 3", "Room 2"],
+    R1toR3: ["Room 1", "HW 1", "HW 2", "HW 3", "Room 3"],
+    R1toR5: [
+        "Room 1",
+        "HW 1",
+        "HW 2",
+        "HW 3",
+        "Room 3",
+        "HW 8",
+        "HW 9",
+        "HW 10",
+        "Room 5",
+    ],
+    R1toR4: [
+        "Room 1",
+        "HW 1",
+        "HW 2",
+        "HW 3",
+        "Room 2",
+        "HW 4",
+        "HW 5",
+        "HW 6",
+        "HW 7",
+        "Room 4",
+    ],
+    R2toR1: ["Room 2", "HW 3", "HW 2", "HW 1", "Room 1"],
+    R2toR3: ["Room 2", "HW 3", "Room 3"],
+    R2toR4: ["Room 2", "HW 4", "HW 5", "HW 6", "HW 7", "Room 4"],
+    R2toR5: ["Room 2", "HW 3", "Room 3", "HW 8", "HW 9", "HW 10", "Room 5"],
+    R3toR1: ["Room 3", "HW 3", "HW 2", "HW 1", "Room 1"],
+    R3toR2: ["Room 3", "HW 3", "Room 2"],
+    R3toR4: [
+        "Room 3",
+        "HW 3",
+        "Room 2",
+        "HW 4",
+        "HW 5",
+        "HW 6",
+        "HW 7",
+        "Room 4",
+    ],
+    R3toR5: ["Room 3", "HW 8", "HW 9", "HW 10", "Room 5"],
+    R4toR1: [
+        "Room 4",
+        "HW 7",
+        "HW 6",
+        "HW 5",
+        "HW 4",
+        "Room 2",
+        "HW 3",
+        "HW 2",
+        "HW 1",
+        "Room 1",
+    ],
+    R4toR2: ["Room 4", "HW 7", "HW 6", "HW 5", "HW 4", "Room 2"],
+    R4toR3: [
+        "Room 4",
+        "HW 7",
+        "HW 6",
+        "HW 5",
+        "HW 4",
+        "Room 2",
+        "HW 3",
+        "Room 3",
+    ],
+    R4toR5: [
+        "Room 4",
+        "HW 7",
+        "HW 6",
+        "HW 5",
+        "HW 4",
+        "Room 2",
+        "HW 3",
+        "Room 3",
+        "HW 8",
+        "HW 9",
+        "HW 10",
+        "Room 5",
+    ],
+    R5toR1: [
+        "Room 5",
+        "HW 10",
+        "HW 9",
+        "HW 8",
+        "Room 3",
+        "HW 3",
+        "HW 2",
+        "HW 1",
+        "Room 1",
+    ],
+    R5toR2: ["Room 5", "HW 10", "HW 9", "HW 8", "Room 3", "HW 3", "Room 2"],
+    R5toR3: ["Room 5", "HW 10", "HW 9", "HW 8", "Room 3"],
+    R5toR4: [
+        "Room 5",
+        "HW 10",
+        "HW 9",
+        "HW 8",
+        "Room 3",
+        "HW 3",
+        "Room 2",
+        "HW 4",
+        "HW 5",
+        "HW 6",
+        "HW 7",
+        "Room 4",
+    ],
+};
 
 export default function Home() {
     const [circlePosition, setCirclePosition] = useState(
         roomCoordinates["Room 1"]
     );
     const [transitionEnabled, setTransitionEnabled] = useState(false);
+    const [currentRoom, setCurrentRoom] = useState("Room 1");
 
     const handleRoomClick = (room) => {
+        if (currentRoom === "Room 1" && room === "Room 3") {
+            const path = paths["R1toR3"];
+            moveCircleAlongPath(path);
+        }
+        // Add other conditions for different room transitions here...
+        setCurrentRoom(room);
+    };
+
+    const moveCircleAlongPath = (path) => {
         setTransitionEnabled(true);
-        setTimeout(() => {
-            setCirclePosition(roomCoordinates[room]);
-        }, 100);
+        path.forEach((room, index) => {
+            setTimeout(() => {
+                setCirclePosition(roomCoordinates[room]);
+            }, index * 1000); // Delay each step by 1 second
+        });
     };
 
     useEffect(() => {
@@ -151,6 +165,7 @@ export default function Home() {
         transition: transitionEnabled ? "top 1s, left 1s" : "none",
         zIndex: 10,
     };
+
     return (
         <div className={styles.container}>
             <Head>
@@ -214,7 +229,7 @@ export default function Home() {
                         <div className={styles.hallway}>H7</div>
                         <button
                             className={styles.class}
-                            onClick={() => handleRoomClick("Room 4")}>
+                            onClick={() => handleRoomClick("Room4")}>
                             Room 4
                         </button>
                     </div>
