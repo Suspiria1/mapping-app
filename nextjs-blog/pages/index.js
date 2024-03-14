@@ -20,10 +20,22 @@ const roomCoordinates = {
     "HW 10": { x: 795, y: 195 },
 };
 
-const paths = {
-    R1toR2: ["Room 1", "HW 1", "HW 2", "HW 3", "Room 2"],
-    R1toR3: ["Room 1", "HW 1", "HW 2", "HW 3", "Room 3"],
-    R1toR5: [
+const R1 = {
+    R2: ["Room 1", "HW 1", "HW 2", "HW 3", "Room 2"],
+    R3: ["Room 1", "HW 1", "HW 2", "HW 3", "Room 3"],
+    R4: [
+        "Room 1",
+        "HW 1",
+        "HW 2",
+        "HW 3",
+        "Room 2",
+        "HW 4",
+        "HW 5",
+        "HW 6",
+        "HW 7",
+        "Room 4",
+    ],
+    R5: [
         "Room 1",
         "HW 1",
         "HW 2",
@@ -34,36 +46,24 @@ const paths = {
         "HW 10",
         "Room 5",
     ],
-    R1toR4: [
-        "Room 1",
-        "HW 1",
-        "HW 2",
-        "HW 3",
-        "Room 2",
-        "HW 4",
-        "HW 5",
-        "HW 6",
-        "HW 7",
-        "Room 4",
-    ],
-    R2toR1: ["Room 2", "HW 3", "HW 2", "HW 1", "Room 1"],
-    R2toR3: ["Room 2", "HW 3", "Room 3"],
-    R2toR4: ["Room 2", "HW 4", "HW 5", "HW 6", "HW 7", "Room 4"],
-    R2toR5: ["Room 2", "HW 3", "Room 3", "HW 8", "HW 9", "HW 10", "Room 5"],
-    R3toR1: ["Room 3", "HW 3", "HW 2", "HW 1", "Room 1"],
-    R3toR2: ["Room 3", "HW 3", "Room 2"],
-    R3toR4: [
-        "Room 3",
-        "HW 3",
-        "Room 2",
-        "HW 4",
-        "HW 5",
-        "HW 6",
-        "HW 7",
-        "Room 4",
-    ],
-    R3toR5: ["Room 3", "HW 8", "HW 9", "HW 10", "Room 5"],
-    R4toR1: [
+};
+
+const R2 = {
+    R1: ["Room2", "HW 3", "HW 2", "HW 1", "Room 1"],
+    R3: ["Room 2", "HW 3", "Room 3"],
+    R4: ["Room2", "HW 4", "HW 5", "HW 6", "HW 7", "Room 4"],
+    R5: ["Room 2", "HW 3", "Room 3", "HW 8", "HW 9", "HW 10", "Room 5"],
+};
+
+const R3 = {
+    R1: ["Room 3", "HW 3", "HW 2", "HW 1", "Room 1"],
+    R2: ["Room 3", "HW 3", "Room 2"],
+    R4: ["Room 3", "HW 3", "Room 2", "HW 4", "HW 5", "HW 6", "HW 7", "Room 4"],
+    R5: ["Room 3", "HW 8", "HW 9", "HW 10", "Room 5"],
+};
+
+const R4 = {
+    R1: [
         "Room 4",
         "HW 7",
         "HW 6",
@@ -75,18 +75,9 @@ const paths = {
         "HW 1",
         "Room 1",
     ],
-    R4toR2: ["Room 4", "HW 7", "HW 6", "HW 5", "HW 4", "Room 2"],
-    R4toR3: [
-        "Room 4",
-        "HW 7",
-        "HW 6",
-        "HW 5",
-        "HW 4",
-        "Room 2",
-        "HW 3",
-        "Room 3",
-    ],
-    R4toR5: [
+    R2: ["Room 4", "HW 7", "HW 6", "HW 5", "HW 4", "Room 2"],
+    R3: ["Room 4", "HW 7", "HW 6", "HW 5", "HW 4", "Room 2", "HW 3", "Room 3"],
+    R5: [
         "Room 4",
         "HW 7",
         "HW 6",
@@ -100,7 +91,10 @@ const paths = {
         "HW 10",
         "Room 5",
     ],
-    R5toR1: [
+};
+
+const R5 = {
+    R1: [
         "Room 5",
         "HW 10",
         "HW 9",
@@ -111,9 +105,9 @@ const paths = {
         "HW 1",
         "Room 1",
     ],
-    R5toR2: ["Room 5", "HW 10", "HW 9", "HW 8", "Room 3", "HW 3", "Room 2"],
-    R5toR3: ["Room 5", "HW 10", "HW 9", "HW 8", "Room 3"],
-    R5toR4: [
+    R2: ["Room 5", "HW 10", "HW 9", "HW 8", "Room 3", "HW 3", "Room 2"],
+    R3: ["Room 5", "HW 10", "HW 9", "HW 8", "Room 3"],
+    R4: [
         "Room 5",
         "HW 10",
         "HW 9",
@@ -136,21 +130,41 @@ export default function Home() {
     const [transitionEnabled, setTransitionEnabled] = useState(false);
     const [currentRoom, setCurrentRoom] = useState("Room 1");
 
-    const handleRoomClick = (room) => {
-        if (currentRoom === "Room 1" && room === "Room 3") {
-            const path = paths["R1toR3"];
+    const roomToConstMap = {
+        R1: R1,
+        R2: R2,
+        R3: R3,
+        R4: R4,
+        R5: R5,
+    };
+
+    const findPath = (currentRoom, destinationRoom) => {
+        // Retrieve the corresponding constant based on the current room
+        const currentRoomObj = roomToConstMap[currentRoom];
+
+        // Retrieve the path from the current room to the destination room
+        console.log(currentRoomObj);
+    };
+
+    const handleRoomClick = (destinationRoom) => {
+        if (currentRoom !== destinationRoom) {
+            const path = findPath(currentRoom, destinationRoom);
             moveCircleAlongPath(path);
+            setCurrentRoom(destinationRoom);
         }
-        // Add other conditions for different room transitions here...
-        setCurrentRoom(room);
     };
 
     const moveCircleAlongPath = (path) => {
+        if (!Array.isArray(path)) {
+            console.error("Path is not an array:", path);
+            return;
+        }
+
         setTransitionEnabled(true);
         path.forEach((room, index) => {
             setTimeout(() => {
                 setCirclePosition(roomCoordinates[room]);
-            }, index * 1000); // Delay each step by 1 second
+            }, index * 500); // Delay each step by 1 second
         });
     };
 
@@ -165,6 +179,9 @@ export default function Home() {
         transition: transitionEnabled ? "top 1s, left 1s" : "none",
         zIndex: 10,
     };
+
+    console.log("your current room is " + currentRoom);
+    console.log(R5.R3);
 
     return (
         <div className={styles.container}>
@@ -193,7 +210,7 @@ export default function Home() {
                     <div className={styles.rowClass1}>
                         <button
                             className={styles.class}
-                            onClick={() => handleRoomClick("Room 3")}>
+                            onClick={() => handleRoomClick("R3")}>
                             Room 3
                         </button>
                         <div className={styles.hallway}>H8</div>
@@ -201,7 +218,7 @@ export default function Home() {
                         <div className={styles.hallway}>H10</div>
                         <button
                             className={styles.class}
-                            onClick={() => handleRoomClick("Room 5")}>
+                            onClick={() => handleRoomClick("R5")}>
                             Room 5
                         </button>
                     </div>
@@ -209,7 +226,7 @@ export default function Home() {
                     <div className={styles.rowClass2}>
                         <button
                             className={styles.class}
-                            onClick={() => handleRoomClick("Room 1")}>
+                            onClick={() => handleRoomClick("R1")}>
                             Room 1
                         </button>
                         <div className={styles.hallway}>H1</div>
@@ -220,7 +237,7 @@ export default function Home() {
                     <div className={styles.rowClass3}>
                         <button
                             className={styles.class}
-                            onClick={() => handleRoomClick("Room 2")}>
+                            onClick={() => handleRoomClick("R2")}>
                             Room 2
                         </button>
                         <div className={styles.hallway}>H4</div>
@@ -229,7 +246,7 @@ export default function Home() {
                         <div className={styles.hallway}>H7</div>
                         <button
                             className={styles.class}
-                            onClick={() => handleRoomClick("Room4")}>
+                            onClick={() => handleRoomClick("R4")}>
                             Room 4
                         </button>
                     </div>
