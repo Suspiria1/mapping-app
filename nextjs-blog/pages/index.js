@@ -128,7 +128,7 @@ export default function Home() {
         roomCoordinates["Room 1"]
     );
     const [transitionEnabled, setTransitionEnabled] = useState(false);
-    const [currentRoom, setCurrentRoom] = useState("Room 1");
+    const [currentRoom, setCurrentRoom] = useState("R1");
 
     const roomToConstMap = {
         R1: R1,
@@ -139,11 +139,10 @@ export default function Home() {
     };
 
     const findPath = (currentRoom, destinationRoom) => {
-        // Retrieve the corresponding constant based on the current room
         const currentRoomObj = roomToConstMap[currentRoom];
+        const locationsArray = currentRoomObj[destinationRoom];
 
-        // Retrieve the path from the current room to the destination room
-        console.log(currentRoomObj);
+        return locationsArray.map((location) => roomCoordinates[location]);
     };
 
     const handleRoomClick = (destinationRoom) => {
@@ -163,8 +162,8 @@ export default function Home() {
         setTransitionEnabled(true);
         path.forEach((room, index) => {
             setTimeout(() => {
-                setCirclePosition(roomCoordinates[room]);
-            }, index * 500); // Delay each step by 1 second
+                setCirclePosition(room);
+            }, index * 500);
         });
     };
 
@@ -181,7 +180,6 @@ export default function Home() {
     };
 
     console.log("your current room is " + currentRoom);
-    console.log(R5.R3);
 
     return (
         <div className={styles.container}>
