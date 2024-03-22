@@ -128,7 +128,7 @@ export default function Home() {
         widthAndHeight: { x: 1535, y: 585 },
     };
 
-    console.log(window.screen.height, window.screen.width);
+    //console.log(window.innerWidth, window.innerWidth);
 
     const [circlePosition, setCirclePosition] = useState(
         roomCoordinates["Room 1"]
