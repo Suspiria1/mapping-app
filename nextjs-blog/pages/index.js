@@ -124,6 +124,12 @@ const R5 = {
 };
 
 export default function Home() {
+    const baseDimensions = {
+        widthAndHeight: { x: 1535, y: 585 },
+    };
+
+    console.log(window.screen.height, window.screen.width);
+
     const [circlePosition, setCirclePosition] = useState(
         roomCoordinates["Room 1"]
     );
@@ -273,6 +279,7 @@ export default function Home() {
                     flex-direction: column;
                     justify-content: center;
                     align-items: center;
+                    width: 1535px;
                 }
 
                 footer {
